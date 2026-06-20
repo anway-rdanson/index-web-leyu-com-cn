@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>斗地主 · 再访记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", sans-serif;
+      background-color: #fafaf9;
+      color: #1c1a1a;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .page-wrap {
+      max-width: 660px;
+      width: 100%;
+    }
+
+    /* hero 开场 — 极简窄幅 */
+    .hero {
+      margin-bottom: 3rem;
+      padding-top: 2.8rem;
+    }
+
+    .hero .small-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9f8c7c;
+      font-weight: 450;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1 {
+      font-weight: 520;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: #2b241f;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero .lead {
+      font-size: 1.1rem;
+      color: #4d423b;
+      border-left: 3px solid #d9c7b5;
+      padding-left: 1.2rem;
+      max-width: 500px;
+    }
+
+    /* 承接段落 — 收藏与再访 */
+    .return-note {
+      margin-bottom: 3rem;
+      font-size: 0.98rem;
+      color: #3a332e;
+    }
+
+    .return-note p {
+      margin-bottom: 1.2rem;
+    }
+
+    .return-note a {
+      color: #5b3f2c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .return-note a:hover {
+      color: #2f221b;
+      text-decoration-color: #b3a08f;
+    }
+
+    .return-note .mild-accent {
+      display: inline-block;
+      background: #f2ebe4;
+      padding: 0.15rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #5f4e3f;
+      margin-top: 0.25rem;
+    }
+
+    /* 特点列表 — 信息密度高，无冗余 */
+    .feature-block {
+      margin-bottom: 3.4rem;
+    }
+
+    .feature-block h2 {
+      font-weight: 510;
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+      color: #2e2823;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e7dbcf;
+      padding-bottom: 0.5rem;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+      border: 1px solid #ede8e2;
+      transition: border 0.2s;
+    }
+
+    .feature-item:hover {
+      border-color: #cbb8a6;
+    }
+
+    .feature-item h3 {
+      font-weight: 520;
+      font-size: 1rem;
+      letter-spacing: 0.005em;
+      color: #3b302a;
+      margin-bottom: 0.25rem;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #5e544b;
+      line-height: 1.6;
+    }
+
+    .feature-item code {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.8rem;
+      background: #f2ede8;
+      padding: 0.1rem 0.45rem;
+      border-radius: 6px;
+      color: #4b3f36;
+    }
+
+    /* 温和结尾 — 保持关注 */
+    .gentle-ending {
+      margin: 3rem 0 2rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid #e7dbcf;
+      font-size: 0.95rem;
+      color: #51473f;
+    }
+
+    .gentle-ending p {
+      margin-bottom: 0.8rem;
+    }
+
+    .gentle-ending .highlight-text {
+      color: #3f3229;
+      font-weight: 470;
+    }
+
+    .gentle-ending a {
+      color: #5b3f2c;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .gentle-ending a:hover {
+      color: #2f221b;
+    }
+
+    .footer-note {
+      margin-top: 2.8rem;
+      font-size: 0.8rem;
+      color: #a1978d;
+      border-top: 1px solid #e7dbcf;
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span {
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero .lead {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+      .feature-item {
+        padding: 0.9rem 1rem;
+      }
+      .page-wrap {
+        max-width: 100%;
+      }
+      .return-note .mild-accent {
+        display: block;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- hero 开场短句 -->
+    <div class="hero">
+      <div class="small-label">再访 · 收藏</div>
+      <h1>重翻牌底的时刻</h1>
+      <div class="lead">
+        当你再度打开这个页面，<br>它已不是初次见面的陌生牌桌。
+      </div>
+    </div>
+
+    <!-- 承接段落：从再次访问、收藏、持续关注 -->
+    <div class="return-note">
+      <p>
+        对一局好牌的记忆，往往藏在下次落子的犹豫里。  
+        <a href="https://play-doudizhu.com">斗地主</a> 的乐趣，从不因一局终了而褪色——  
+        收藏一个页签，就像在牌桌边留一个座位，随时可以坐回熟悉的节奏。  
+        <span class="mild-accent">⌘D / 书签 · 随时可归</span>
+      </p>
+      <p>
+        过去一年，我们陆续调整了出牌响应、叫分逻辑与牌型校验；  
+        有些是老玩家反复提议的细节，有些是后台默默优化的流畅度。  
+        持续关注，是因为规则虽未变，但体验的颗粒度一直在收细。
+      </p>
+    </div>
+
+    <!-- 特点列表：不夸张，偏重实际体验 -->
+    <div class="feature-block">
+      <h2>· 四副可感知的差异</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>叫牌节奏记忆</h3>
+          <p>系统不会重置上一局的选择偏好——叫地主、不叫、抢地主，每一步都沿用你最近三次的习惯权重。再访时无需重新适应。</p>
+        </div>
+        <div class="feature-item">
+          <h3>手牌高亮弱提示</h3>
+          <p>长按某张牌可高亮同点数的所有手牌；松开即隐，不干扰原本的出牌节奏。对记牌器依赖较少的玩家，这算一种轻辅助。</p>
+        </div>
+        <div class="feature-item">
+          <h3>牌局回放 · 仅限最后一手</h3>
+          <p>每局结束后可回放最后三手出牌（含对手）。不做全盘复盘，只解决“刚才他到底出了什么”的短暂遗忘。</p>
+        </div>
+        <div class="feature-item">
+          <h3>无弹窗 · 纯牌桌交互</h3>
+          <p>整个页面只存在一副牌桌：没有每日签到、没有商城入口、没有比分排行榜。收藏夹里多一个干净的去处。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 温和结尾：保持可回访的松弛感 -->
+    <div class="gentle-ending">
+      <p>
+        如果你习惯把常用工具或游戏放在浏览器书签栏的某个角落——  
+        <span class="highlight-text"><a href="https://play-doudizhu.com">斗地主</a></span> 值得占据其中一个窄窄的位置。
+      </p>
+      <p>
+        我们不会主动推送更新提醒，不会用红点标记催促你回来。  
+        页面还是那个页面，牌局也还是那副牌局；  
+        你想起它的时候，它就在那里，且比上次更利落一点。
+      </p>
+    </div>
+
+    <!-- 页脚辅助信息，不喧宾夺主 -->
+    <div class="footer-note">
+      <span>无需账号 · 即开即玩</span>
+      <span>下次再来 · 牌局如故</span>
+    </div>
+  </div>
+</body>
+</html>
